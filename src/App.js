@@ -1,3 +1,4 @@
+import { Header, Footer } from './Components';
 import { Champion, ChampionList, Item, Error404 } from './Containers';
 
 import './App.css';
@@ -11,6 +12,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <ResetCss />
+      <Header />
       <Router>
         <Switch>
           <Route exact path="/">
@@ -30,6 +32,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <Footer />
     </ThemeProvider>
   );
 }

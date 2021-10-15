@@ -12,8 +12,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <ResetCss />
-      <Header />
       <Router>
+        <Header />
         <Switch>
           <Route exact path="/">
             <ChampionList />

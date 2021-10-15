@@ -1,3 +1,6 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import version from './Modules/Version';
 
-const store = configureStore();
+const store = configureStore({ reducer: version });
+
+export default store;

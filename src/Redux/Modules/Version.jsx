@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { FILTER_VERSION } from '../../Services/API';
+import { SEARCH_IN_VERSION } from '../../Services/API';
 
 const slice = createSlice({
   name: 'version',
@@ -26,10 +26,11 @@ const slice = createSlice({
 });
 
 const { fetchStated, fetchSuccess, fetchError } = slice.actions;
+
 export const fetchVersion = (version) => async (dispatch) => {
   try {
     dispatch(fetchStated());
-    const { url, options } = FILTER_VERSION();
+    const { url, options } = SEARCH_IN_VERSION(version);
     const response = await fetch(url, options);
     const data = await response.json();
     return dispatch(fetchSuccess(data));

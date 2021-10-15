@@ -6,6 +6,9 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { ResetCss } from './Global/ResetCss';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchVersion } from './Redux/Modules/Version';
+
 import theme from './Global/Theme';
 
 function App() {

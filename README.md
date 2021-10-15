@@ -1,7 +1,6 @@
 <h1><b>League of Legends Database w/ Redux</b></h1>
 <hr>
 <h2>⚙️ Used Libraries</h2>
-<br />
 <dl>
   <dt>ReactJS</dt>
     <dd>
@@ -41,7 +40,7 @@
       <p>Import css files</p>
       <code>
         import "slick-carousel/slick/slick.css";
-        <br />import "slick-carousel/slick/slick-theme.css";
+        import "slick-carousel/slick/slick-theme.css";
       </code>
     </dd>
   <dt>React-Tabs</dt>

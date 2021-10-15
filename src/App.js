@@ -20,7 +20,7 @@ import { FILTER_VERSION } from './Services/API';
 import useFetch from './Hooks/useFetch';
 
 function App() {
-  const { data, request } = useFetch();
+  const { fetchData, request } = useFetch();
   const [version, setVersion] = React.useState('11.19.1');
 
   React.useEffect(() => {
@@ -28,7 +28,7 @@ function App() {
     request(url, options);
   }, [request]);
 
-  if (data)
+  if (fetchData)
     return (
       <ThemeProvider theme={theme}>
         <ResetCss />
@@ -41,7 +41,7 @@ function App() {
                 id={version}
                 value={version}
                 setValue={setVersion}
-                data={data}
+                data={fetchData}
               />
               <ChampionList />
             </Route>

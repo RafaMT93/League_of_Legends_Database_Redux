@@ -1,7 +1,7 @@
 import React from 'react';
 
 const useFetch = () => {
-  const [data, setData] = React.useState(null);
+  const [fetchData, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
 
@@ -25,7 +25,7 @@ const useFetch = () => {
     }
   }, []);
 
-  return { data, loading, error, request };
+  return { fetchData, loading, error, request };
 };
 
 export default useFetch;

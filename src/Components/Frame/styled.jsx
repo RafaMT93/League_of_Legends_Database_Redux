@@ -1,19 +1,23 @@
 import styled from 'styled-components';
+import { Device } from '../../Global/Device';
 
 export const WrapperSection = styled.section`
   display: block;
   text-align: center;
 `;
 
-export const WrapperFrame = styled.div`
-  height: ${({ height }) => height};
-  width: ${({ width }) => width};
+export const WrapperFrame = styled.div.attrs((props) => ({
+  style: {
+    height: props.height,
+    width: props.width,
+    backgroundImage: `url(${props.image})`,
+    opacity: props.opacity,
+  },
+}))`
   border: 1px solid #333;
-  background-image: url(${({ image }) => image});
   background-size: cover;
   cursor: pointer;
-  opacity: ${({ opacity }) => opacity};
-  @media (max-width: 768px) {
+  @media (${Device.tablet}) {
     height: calc(${({ height }) => height} / 1.5);
     width: calc(${({ width }) => width} / 1.5);
   }

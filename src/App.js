@@ -43,10 +43,10 @@ function App() {
                 setValue={setVersion}
                 data={fetchData}
               />
-              <ChampionList />
+              <ChampionList version={version} />
             </Route>
             <Route path="/Champion">
-              <ChampionList />
+              <ChampionList version={version} />
             </Route>
             <Route path="/Champion/:name">
               <Champion />

@@ -16,11 +16,13 @@ const slice = createSlice({
       state.loading = false;
       state.data = action.payload;
       state.error = null;
+      state.version = action.payload.version;
     },
     fetchError(state, action) {
       state.loading = false;
       state.data = null;
       state.error = action.payload;
+      state.version = null;
     },
   },
 });

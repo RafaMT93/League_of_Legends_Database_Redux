@@ -1,5 +1,8 @@
 <h1><b>League of Legends Database w/ Redux</b></h1>
 <hr>
+<h2>Overview</h2>
+<p>A database of League of Legends Game created for Redux Study.</p>
+<p>Developed using the API <a href="https://developer.riotgames.com" target="_blank"><b>League of Legends API</b></a>.</p>
 <h2>⚙️ Used Libraries</h2>
 <dl>
   <dt>ReactJS</dt>
@@ -48,3 +51,6 @@
       <code>npm install --save react-tabs</code>
     </dd>
 </dl>
+<h2>🎯 Objective</h2>
+<p>Project created for Redux study.</p>
+<p>For view, clone this project, run <code><b>npm i</b></code> in the folder and execute with <code><b>npm start</b></code>.</p>

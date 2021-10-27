@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'styled-components';
+import Main from './Routes/Main';
 
 //Default CSS
 import './App.css';
@@ -6,8 +7,6 @@ import './App.css';
 //Global Settings
 import { ResetCss } from './Global/ResetCss';
 import theme from './Global/Theme';
-
-import Main from './Routes/Main';
 
 function App() {
   return (

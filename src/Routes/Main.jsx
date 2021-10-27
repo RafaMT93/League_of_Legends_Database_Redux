@@ -13,7 +13,7 @@ import useFetch from '../Hooks/useFetch';
 
 const Main = () => {
   const { fetchData, request } = useFetch();
-  const [version, setVersion] = React.useState('11.20.1');
+  const [version, setVersion] = React.useState('11.21.1');
 
   React.useEffect(() => {
     const { url, options } = FILTER_VERSION();

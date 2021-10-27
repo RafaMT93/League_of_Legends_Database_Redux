@@ -7,6 +7,7 @@ const slice = createSlice({
     loading: false,
     data: null,
     error: null,
+    version: null,
   },
   reducers: {
     fetchStated(state) {

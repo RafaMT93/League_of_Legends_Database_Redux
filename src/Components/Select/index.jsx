@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Select = ({ name, id, value, setValue, onChange, data }) => {
+const Select = ({ name, id, value, setValue, data }) => {
   return (
-    <form onChange={onChange}>
+    <form>
       <label htmlFor={id}>
         <b>{name}:</b>{' '}
       </label>

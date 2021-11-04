@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Components and Containers
-import { Header, Footer, Select } from '../Components';
+import { Header, Footer, Select, Loading } from '../Components';
 import { Champion, ChampionList, Item, Error404 } from '../Containers';
 
 //API
@@ -14,12 +14,18 @@ import useFetch from '../Hooks/useFetch';
 const Main = () => {
   const { fetchData, request } = useFetch();
   const [version, setVersion] = React.useState();
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     const { url, options } = FILTER_VERSION();
-    fetch(url, options)
-      .then((response) => response.json())
-      .then((data) => setVersion(data[0]));
+    async function fetchChampionList() {
+      setLoading(true);
+      await fetch(url, options)
+        .then((response) => response.json())
+        .then((data) => setVersion(data[0]));
+      setLoading(false);
+    }
+    fetchChampionList();
   }, []);
 
   React.useEffect(() => {
@@ -32,6 +38,7 @@ const Main = () => {
       <>
         <Router>
           <Header />
+          {loading && <Loading />}
           <Switch>
             <Route exact path="/">
               <Select
@@ -47,7 +54,7 @@ const Main = () => {
               <ChampionList />
             </Route>
             <Route path="/Champion/:name">
-              <Champion />
+              <Champion version={version} />
             </Route>
             <Route path="/Item">
               <Item />

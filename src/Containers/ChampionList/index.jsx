@@ -1,17 +1,17 @@
 import React from 'react';
-import { Frame } from '../../Components';
-import { Wrapper } from './styled';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchVersion } from '../../Redux/Modules/Version';
+import { Wrapper } from './styled';
+import Frame from '../../Components/Frame';
 
 const ChampionList = ({ version }) => {
-  const { data } = useSelector((state) => state.version);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(fetchVersion(version));
-  }, [version, dispatch]);
+  }, [dispatch, version]);
+
+  const { data } = useSelector((state) => state.version);
 
   if (data)
     return (

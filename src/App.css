@@ -3,13 +3,13 @@
   font-family: 'Friz Quadrata';
   font-weight: normal;
   font-style: normal;
-  src: url('./Assets/fonts/Friz Quadrata Std Medium.otf');
+  src: url('./Assets/Fonts/Friz Quadrata Std Medium.otf');
 }
 @font-face {
   font-family: 'Friz Quadrata';
   font-weight: bold;
   font-style: bold;
-  src: url('./Assets/fonts/Friz Quadrata Bold.otf');
+  src: url('./Assets/Fonts/Friz Quadrata Bold.otf');
 }
 .container {
   max-width: 50rem;

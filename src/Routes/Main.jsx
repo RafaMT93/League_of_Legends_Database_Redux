@@ -19,11 +19,19 @@ const Main = () => {
   React.useEffect(() => {
     const { url, options } = FILTER_VERSION();
     async function fetchChampionList() {
-      setLoading(true);
-      await fetch(url, options)
-        .then((response) => response.json())
-        .then((data) => setVersion(data[0]));
-      setLoading(false);
+      let response;
+      let json;
+      try {
+        setLoading(true);
+        response = await fetch(url, options);
+        json = await response.json();
+      } catch (err) {
+        json = null;
+      } finally {
+        setVersion(json[0]);
+        setLoading(false);
+        return { json, response };
+      }
     }
     fetchChampionList();
   }, []);
@@ -39,6 +47,7 @@ const Main = () => {
         <Router>
           <Header />
           {loading && <Loading />}
+          {version && console.log(version)}
           <Switch>
             <Route exact path="/">
               <Select
@@ -51,7 +60,14 @@ const Main = () => {
               <ChampionList version={version} />
             </Route>
             <Route path="/Champion">
-              <ChampionList />
+              <Select
+                name={'Versão'}
+                id={version}
+                value={version}
+                setValue={setVersion}
+                data={fetchData}
+              />
+              <ChampionList version={version} />
             </Route>
             <Route path="/Champion/:name">
               <Champion version={version} />

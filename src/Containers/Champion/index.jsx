@@ -19,65 +19,67 @@ const Champion = ({ version }) => {
     dispatch(fetchChampion(version, slug));
   }, [version, slug, dispatch]);
 
-  const { champion } = useSelector((state) => state.version);
+  const { data } = useSelector(
+    ({ leagueOfLegends }) => leagueOfLegends.champions,
+  );
 
-  if (champion)
+  if (data)
     return (
       <>
         <WrapperChampionDiv
           image={`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${slug}_0.jpg`}
         >
           <Info
-            attack={champion.data[slug].info.attack}
-            defense={champion.data[slug].info.defense}
-            difficulty={champion.data[slug].info.difficulty}
-            magic={champion.data[slug].info.magic}
-            tags={champion.data[slug].tags}
-            partype={champion.data[slug].partype}
+            attack={data.data[slug].info.attack}
+            defense={data.data[slug].info.defense}
+            difficulty={data.data[slug].info.difficulty}
+            magic={data.data[slug].info.magic}
+            tags={data.data[slug].tags}
+            partype={data.data[slug].partype}
           />
         </WrapperChampionDiv>
         <Lore
-          name={champion.data[slug].name}
-          title={champion.data[slug].title}
-          lore={champion.data[slug].lore}
-          allytips={champion.data[slug].allytips}
-          enemytips={champion.data[slug].enemytips}
-          armor={champion.data[slug].stats.armor}
-          armorperlevel={champion.data[slug].stats.armorperlevel}
-          attackdamage={champion.data[slug].stats.attackdamage}
-          attackdamageperlevel={champion.data[slug].stats.attackdamageperlevel}
-          attackrange={champion.data[slug].stats.attackrange}
-          attackspeed={champion.data[slug].stats.attackspeed}
-          attackspeedperlevel={champion.data[slug].stats.attackspeedperlevel}
-          crit={champion.data[slug].stats.crit}
-          critperlevel={champion.data[slug].stats.critperlevel}
-          hp={champion.data[slug].stats.hp}
-          hpperlevel={champion.data[slug].stats.hpperlevel}
-          hpregen={champion.data[slug].stats.hpregen}
-          hpregenperlevel={champion.data[slug].stats.hpregenperlevel}
-          movespeed={champion.data[slug].stats.movespeed}
-          mp={champion.data[slug].stats.mp}
-          mpperlevel={champion.data[slug].stats.mpperlevel}
-          mpregen={champion.data[slug].stats.mpregen}
-          mpregenperlevel={champion.data[slug].stats.mpregenperlevel}
-          spellblock={champion.data[slug].stats.spellblock}
-          spellblockperlevel={champion.data[slug].stats.spellblockperlevel}
+          name={data.data[slug].name}
+          title={data.data[slug].title}
+          lore={data.data[slug].lore}
+          allytips={data.data[slug].allytips}
+          enemytips={data.data[slug].enemytips}
+          armor={data.data[slug].stats.armor}
+          armorperlevel={data.data[slug].stats.armorperlevel}
+          attackdamage={data.data[slug].stats.attackdamage}
+          attackdamageperlevel={data.data[slug].stats.attackdamageperlevel}
+          attackrange={data.data[slug].stats.attackrange}
+          attackspeed={data.data[slug].stats.attackspeed}
+          attackspeedperlevel={data.data[slug].stats.attackspeedperlevel}
+          crit={data.data[slug].stats.crit}
+          critperlevel={data.data[slug].stats.critperlevel}
+          hp={data.data[slug].stats.hp}
+          hpperlevel={data.data[slug].stats.hpperlevel}
+          hpregen={data.data[slug].stats.hpregen}
+          hpregenperlevel={data.data[slug].stats.hpregenperlevel}
+          movespeed={data.data[slug].stats.movespeed}
+          mp={data.data[slug].stats.mp}
+          mpperlevel={data.data[slug].stats.mpperlevel}
+          mpregen={data.data[slug].stats.mpregen}
+          mpregenperlevel={data.data[slug].stats.mpregenperlevel}
+          spellblock={data.data[slug].stats.spellblock}
+          spellblockperlevel={data.data[slug].stats.spellblockperlevel}
         />
         <Skills
           version={version}
-          passiveImg={`http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${champion.data[slug].passive.image.full}`}
-          altPassive={champion.data[slug].passive.name}
-          titlePassive={champion.data[slug].passive.name}
-          passiveDescription={champion.data[slug].passive.description}
-          spells={champion.data[slug].spells}
-          partype={champion.data[slug].partype}
+          passiveImg={`http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${data.data[slug].passive.image.full}`}
+          altPassive={data.data[slug].passive.name}
+          titlePassive={data.data[slug].passive.name}
+          passiveDescription={data.data[slug].passive.description}
+          spells={data.data[slug].spells}
+          partype={data.data[slug].partype}
         />
 
-        {champion.data[slug].skins.length > 0 ? (
+        {data.data[slug].skins.length > 0 ? (
           <Skins
-            skins={champion.data[slug].skins}
-            name={champion.data[slug].name}
-            id={champion.data[slug].id}
+            skins={data.data[slug].skins}
+            name={data.data[slug].name}
+            id={data.data[slug].id}
           />
         ) : (
           <></>

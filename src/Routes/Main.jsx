@@ -1,89 +1,37 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import '../App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-//Components and Containers
-import { Header, Footer, Select, Loading } from '../Components';
-import { Champion, ChampionList, Item, Error404 } from '../Containers';
+import { Champion, ChampionList, Error404 } from '../Containers';
+import { Header, Footer, Loading } from '../Components';
 
-//API
-import { FILTER_VERSION } from '../Services/API';
+import { useSelector } from 'react-redux';
 
-//Hooks
-import useFetch from '../Hooks/useFetch';
+function App() {
+  const { loading } = useSelector(({ leagueOfLegends }) => leagueOfLegends);
+  const [version, setVersion] = React.useState('11.22.1');
 
-const Main = () => {
-  const { fetchData, request } = useFetch();
-  const [version, setVersion] = React.useState();
-  const [loading, setLoading] = React.useState(false);
-
-  React.useEffect(() => {
-    const { url, options } = FILTER_VERSION();
-    async function fetchChampionList() {
-      let response;
-      let json;
-      try {
-        setLoading(true);
-        response = await fetch(url, options);
-        json = await response.json();
-      } catch (err) {
-        json = null;
-      } finally {
-        setVersion(json[0]);
-        setLoading(false);
-        return { json, response };
-      }
-    }
-    fetchChampionList();
-  }, []);
-
-  React.useEffect(() => {
-    const { url, options } = FILTER_VERSION();
-    request(url, options);
-  }, [request]);
-
-  if (fetchData)
+  if (version)
     return (
-      <>
-        <Router>
-          <Header />
-          {loading && <Loading />}
-          {version && console.log(version)}
-          <Switch>
-            <Route exact path="/">
-              <Select
-                name={'Versão'}
-                id={version}
-                value={version}
-                setValue={setVersion}
-                data={fetchData}
-              />
-              <ChampionList version={version} />
-            </Route>
-            <Route path="/Champion">
-              <Select
-                name={'Versão'}
-                id={version}
-                value={version}
-                setValue={setVersion}
-                data={fetchData}
-              />
-              <ChampionList version={version} />
-            </Route>
-            <Route path="/Champion/:name">
-              <Champion version={version} />
-            </Route>
-            <Route path="/Item">
-              <Item />
-            </Route>
-            <Route path="*">
-              <Error404 />
-            </Route>
-          </Switch>
-        </Router>
+      <BrowserRouter>
+        <Header />
+        {loading && <Loading />}
+        <Routes>
+          <Route path="/">
+            <ChampionList version={version} setValue={setVersion} />
+          </Route>
+          <Route path="/Champion/:slug">
+            <Champion version={version} />
+          </Route>
+          <Route path="*">
+            <Error404 />
+          </Route>
+        </Routes>
         <Footer />
-      </>
+      </BrowserRouter>
     );
-  return null;
-};
 
-export default Main;
+  return null;
+}
+
+export default App;

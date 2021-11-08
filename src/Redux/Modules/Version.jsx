@@ -1,58 +1,97 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { SEARCH_IN_VERSION, SEARCH_CHAMPION } from '../../Services/API';
+import {
+  FILTER_VERSION,
+  SEARCH_IN_VERSION,
+  SEARCH_CHAMPION,
+} from '../../Services/API';
 
 const slice = createSlice({
-  name: 'version',
+  name: 'leagueOfLegends',
   initialState: {
-    lastVersion: null,
     loading: false,
-    data: null,
-    error: null,
     version: null,
-    champion: null,
+    list: {
+      data: null,
+      error: null,
+    },
+    champions: {
+      data: null,
+      error: null,
+    },
+    versions: {
+      data: null,
+      error: null,
+    },
   },
   reducers: {
+    setVersion(state, action) {
+      state.version = action.payload;
+    },
     fetchStarted(state) {
       state.loading = true;
     },
+    fetchSuccessVersion(state, action) {
+      state.loading = false;
+      state.versions.data = action.payload;
+      state.versions.error = null;
+    },
+    fetchErrorVersions(state, action) {
+      state.loading = false;
+      state.versions.data = null;
+      state.versions.error = action.payload;
+    },
     fetchSuccess(state, action) {
       state.loading = false;
-      state.data = action.payload;
-      state.error = null;
-      state.version = action.payload.version;
-      state.champion = null;
+      state.list.data = action.payload;
+      state.list.error = null;
+      state.champions.data = null;
     },
     fetchError(state, action) {
       state.loading = false;
-      state.data = null;
-      state.error = action.payload;
-      state.version = null;
-      state.champion = null;
+      state.list.data = null;
+      state.list.error = action.payload;
     },
     fetchChampionStarted(state, action) {
       state.loading = false;
-      state.data = null;
-      state.error = null;
-      state.version = action.payload.version;
-      state.champion = action.payload;
+      state.champions.data = action.payload;
+      state.champions.error = null;
     },
     fetchChampionError(state, action) {
       state.loading = false;
-      state.data = null;
-      state.error = action.payload;
-      state.version = null;
-      state.champion = null;
+      state.champions.data = null;
+      state.champions.error = action.payload;
     },
   },
 });
 
 const {
+  setVersion,
+  fetchSuccessVersion,
+  fetchErrorVersions,
   fetchStarted,
   fetchSuccess,
   fetchError,
   fetchChampionStarted,
   fetchChampionError,
 } = slice.actions;
+
+export const fetchVersionData = () => async (dispatch) => {
+  let response;
+  let data;
+  try {
+    const { url, options } = FILTER_VERSION();
+    response = await fetch(url, options);
+    data = await response.json();
+  } catch (err) {
+    dispatch(fetchErrorVersions(err.message));
+  } finally {
+    return dispatch(fetchSuccessVersion(data));
+  }
+};
+
+export const setVersionData = (version) => (dispatch) => {
+  dispatch(setVersion(version));
+};
 
 export const fetchVersion = (version) => async (dispatch) => {
   try {

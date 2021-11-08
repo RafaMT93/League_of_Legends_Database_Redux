@@ -3,11 +3,11 @@ import {
   configureStore,
   getDefaultMiddleware,
 } from '@reduxjs/toolkit';
-import logger from './Middleware/logger';
-import version from './Modules/Version';
+//import logger from './Middleware/logger';
+import leagueOfLegends from './Modules/Version';
 
-const reducer = combineReducers({ version });
-const middleware = [...getDefaultMiddleware(), logger];
+const reducer = combineReducers({ leagueOfLegends });
+const middleware = [...getDefaultMiddleware()];
 const store = configureStore({ reducer, middleware });
 
 export default store;

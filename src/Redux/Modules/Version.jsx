@@ -3,6 +3,7 @@ import {
   FILTER_VERSION,
   SEARCH_IN_VERSION,
   SEARCH_CHAMPION,
+  SEARCH_ITENS,
 } from '../../Services/API';
 
 const slice = createSlice({
@@ -19,6 +20,10 @@ const slice = createSlice({
       error: null,
     },
     versions: {
+      data: null,
+      error: null,
+    },
+    items: {
       data: null,
       error: null,
     },
@@ -61,6 +66,16 @@ const slice = createSlice({
       state.champions.data = null;
       state.champions.error = action.payload;
     },
+    fetchItems(state, action) {
+      state.loading = false;
+      state.items.data = action.payload;
+      state.items.error = null;
+    },
+    fetchErrorItems(state, action) {
+      state.loading = false;
+      state.items.data = null;
+      state.items.error = action.payload;
+    },
   },
 });
 
@@ -73,6 +88,8 @@ const {
   fetchError,
   fetchChampionStarted,
   fetchChampionError,
+  fetchItems,
+  fetchErrorItems,
 } = slice.actions;
 
 export const fetchVersionData = () => async (dispatch) => {
@@ -114,6 +131,18 @@ export const fetchChampion = (version, champion) => async (dispatch) => {
     return dispatch(fetchChampionStarted(data));
   } catch (err) {
     dispatch(fetchChampionError(err.message));
+  }
+};
+
+export const fetchItemList = (version) => async (dispatch) => {
+  try {
+    dispatch(fetchStarted());
+    const { url, options } = SEARCH_ITENS(version);
+    let response = await fetch(url, options);
+    let data = await response.json();
+    return dispatch(fetchItems(data));
+  } catch (err) {
+    dispatch(fetchErrorItems(err.message));
   }
 };
 

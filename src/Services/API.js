@@ -30,3 +30,13 @@ export function SEARCH_CHAMPION(version, champion) {
     },
   };
 }
+
+export function SEARCH_ITENS(version) {
+  return {
+    url: CHAMPION_APP_URL + `cdn/${version}/data/pt_BR/item.json`,
+    options: {
+      method: 'GET',
+      cache: 'no-store',
+    },
+  };
+}

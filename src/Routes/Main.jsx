@@ -24,7 +24,7 @@ function App() {
             <Champion version={version} />
           </Route>
           <Route path="/Item">
-            <Item />
+            <Item version={version} />
           </Route>
           <Route path="*">
             <Error404 />

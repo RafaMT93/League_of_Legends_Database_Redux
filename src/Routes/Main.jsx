@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { Champion, ChampionList, Error404 } from '../Containers';
+import { Champion, ChampionList, Item, Error404 } from '../Containers';
 import { Header, Footer, Loading } from '../Components';
 
 import { useSelector } from 'react-redux';
@@ -22,6 +22,9 @@ function App() {
           </Route>
           <Route path="/Champion/:slug">
             <Champion version={version} />
+          </Route>
+          <Route path="/Item">
+            <Item />
           </Route>
           <Route path="*">
             <Error404 />

@@ -6,9 +6,15 @@ const Header = () => {
   return (
     <WrapperHeader>
       <WrapperNav className="container">
-        <Link to="/">Logo</Link>
-        <Link to="/">Champions</Link>
-        <Link to="/Item">Itens</Link>
+        <Link to="/" role="nav-link">
+          Logo
+        </Link>
+        <Link to="/" role="nav-link">
+          Champions
+        </Link>
+        <Link to="/Item" role="nav-link">
+          Itens
+        </Link>
       </WrapperNav>
     </WrapperHeader>
   );

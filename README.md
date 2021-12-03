@@ -54,3 +54,6 @@
 <h2>🎯 Objective</h2>
 <p>Project created for Redux study.</p>
 <p>For view, clone this project, run <code><b>npm i</b></code> in the folder and execute with <code><b>npm start</b></code>.</p>
+
+<h2>Link</h2>
+<a href="https://modest-lamarr-fe8ec1.netlify.app" target="_blank">https://modest-lamarr-fe8ec1.netlify.app</a>

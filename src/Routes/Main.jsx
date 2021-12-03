@@ -17,18 +17,16 @@ function App() {
         <Header />
         {loading && <Loading />}
         <Routes>
-          <Route path="/">
-            <ChampionList version={version} setValue={setVersion} />
-          </Route>
-          <Route path="/Champion/:slug">
-            <Champion version={version} />
-          </Route>
-          <Route path="/Item">
-            <Item version={version} />
-          </Route>
-          <Route path="*">
-            <Error404 />
-          </Route>
+          <Route
+            path="/"
+            element={<ChampionList version={version} setValue={setVersion} />}
+          />
+          <Route
+            path="/Champion/:slug"
+            element={<Champion version={version} />}
+          />
+          <Route path="/Item" element={<Item version={version} />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </BrowserRouter>

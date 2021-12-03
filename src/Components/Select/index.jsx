@@ -15,20 +15,23 @@ const Select = ({ name, id, value, setValue }) => {
     dispatch(setVersionData(target.value));
     setValue(target.value);
   }
-  return (
-    <form>
-      <label htmlFor={id}>
-        <b>{name}:</b>{' '}
-      </label>
-      <select id={id} value={value} onChange={handleChange}>
-        {versions?.data.map((x, index) => (
-          <option key={index} value={x}>
-            {x}
-          </option>
-        ))}
-      </select>
-    </form>
-  );
+
+  if (versions)
+    return (
+      <form>
+        <label htmlFor={id}>
+          <b>{name}:</b>{' '}
+        </label>
+        <select id={id} value={value} onChange={handleChange}>
+          {versions?.data.map((x, index) => (
+            <option key={index} value={x}>
+              {x}
+            </option>
+          ))}
+        </select>
+      </form>
+    );
+  return null;
 };
 
 export default Select;

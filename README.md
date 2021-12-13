@@ -1,59 +1,68 @@
-<h1><b>League of Legends Database w/ Redux</b></h1>
-<hr>
-<h2>Overview</h2>
-<p>A database of League of Legends Game created for Redux Study.</p>
-<p>Developed using the API <a href="https://developer.riotgames.com" target="_blank"><b>League of Legends API</b></a>.</p>
-<h2>⚙️ Used Libraries</h2>
-<dl>
-  <dt>ReactJS</dt>
-    <dd>
-      <code>npx create-react-app react-app</code>
-    </dd>
-  <dt>React Router Dom</dt>
-    <dd>
-      <code>npm install react-router-dom</code>
-    </dd>
-  <dt>Redux</dt>
-    <dd>
-      <code>npm install redux</code>
-    </dd>
-  <dt>React Redux</dt>
-    <dd>
-      <code>npm install react-redux</code>
-    </dd>
-  <dt>@ReduxJS/Toolkits</dt>
-    <dd>
-      <code>npm install @reduxjs/toolkit</code>
-    </dd>
-  <dt>Styled-Components</dt>
-    <dd>
-      <code>npm install --save styled-components</code>
-    </dd>
-  <dt>Antd</dt>
-    <dd>
-      <code>npm install antd</code>
-      <p>And import style manually:</p>
-      <code>import 'antd/dist/antd.css'; </code>
-    </dd>
-  <dt>React-Slick</dt>
-    <dd>
-      <code>npm install react-slick --save</code>
-      <p>Also install slick-carousel for css and font</p>
-      <code>npm install slick-carousel</code>
-      <p>Import css files</p>
-      <code>
-        import "slick-carousel/slick/slick.css";
-        import "slick-carousel/slick/slick-theme.css";
-      </code>
-    </dd>
-  <dt>React-Tabs</dt>
-    <dd>
-      <code>npm install --save react-tabs</code>
-    </dd>
-</dl>
-<h2>🎯 Objective</h2>
-<p>Project created for Redux study.</p>
-<p>For view, clone this project, run <code><b>npm i</b></code> in the folder and execute with <code><b>npm start</b></code>.</p>
+# *League of Legends Database w/ Redux*
+---
+## Overview
+A database of League of Legends Game created for Redux Study.
 
-<h2>Link</h2>
-<a href="https://modest-lamarr-fe8ec1.netlify.app" target="_blank">https://modest-lamarr-fe8ec1.netlify.app</a>
+Developed using the API [*League of Legends API*](https://developer.riotgames.com).
+
+## ⚙️ Used Libraries
+
+*ReactJS*
+
+`npx create-react-app react-app`
+
+*React Router Dom*
+
+`npm install react-router-dom`
+    
+*Redux*
+
+`npm install redux`
+
+*React Redux*
+
+`npm install react-redux`
+
+*@ReduxJS/Toolkits*
+
+`npm install @reduxjs/toolkit`
+
+*Styled-Components*
+
+`npm install --save styled-components`
+
+*Antd*
+
+`npm install antd`
+
+And import style manually:
+      
+`import 'antd/dist/antd.css'`
+    
+*React-Slick*
+
+`npm install react-slick --save`
+
+Also install slick-carousel for css and font
+
+`npm install slick-carousel`
+
+Import css files
+
+`import "slick-carousel/slick/slick.css";`
+ 
+`import "slick-carousel/slick/slick-theme.css"`
+
+*React-Tabs*
+
+`npm install --save react-tabs`
+
+## 🎯 Objective
+
+Project created for Redux study.
+
+For view, clone this project, run <code><b>npm i</b></code> in the folder and execute with *`npm start`*.
+
+
+## Link
+[Click Here](https://modest-lamarr-fe8ec1.netlify.app)
